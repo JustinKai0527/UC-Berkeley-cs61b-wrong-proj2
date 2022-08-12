@@ -4,16 +4,16 @@ public class ArrayDeque<T> {
     private int _nextLast;
     private int _capacity;
     private int _size;
-    public T[] _array;
+    private T[] _array;
 
-    ArrayDeque(){
+    public ArrayDeque(){
         _capacity = 8;
         _nextFirst = 4;
         _nextLast = 5;
         _array = (T[]) new Object[8];
     }
     
-    public void resize(int capacity){
+    private void resize(int capacity){
         T[] replace = (T[]) new Object[capacity];
         int index = 0;
 

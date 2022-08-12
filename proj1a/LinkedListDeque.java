@@ -11,8 +11,8 @@ public class LinkedListDeque<T> {
         Node(){}
     }
 
-    public int size = 0;
-    public Node head;
+    private int size = 0;
+    private Node head;
 
     public LinkedListDeque(){
 
@@ -84,7 +84,7 @@ public class LinkedListDeque<T> {
         return cur._item;
     }
 
-    public T recursive(Node cur, int index){
+    private T recursive(Node cur, int index){
         if(index == 0)  return cur._item;
         return recursive(cur.next,index-1);
     }
