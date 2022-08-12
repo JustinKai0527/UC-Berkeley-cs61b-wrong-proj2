@@ -7,7 +7,7 @@ public class NBody{
         return in.readDouble();
     }
 
-    public static Planet[] readBodies(String planet){
+    public static Planet[] readPlanets(String planet){
         In in = new In(planet);
         int numbers = in.readInt();
         Planet[] b_arr = new Planet[numbers];
