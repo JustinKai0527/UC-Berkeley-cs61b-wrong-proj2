@@ -26,7 +26,7 @@ public class NBody{
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
         double radius = readRadius(filename);
-        Planet[] bodies = readBodies(filename);
+        Planet[] bodies = readPlanets(filename);
         
         // Drawing the Background
         String imageToDraw = "images/starfield.jpg";
