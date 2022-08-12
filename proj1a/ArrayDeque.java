@@ -16,7 +16,7 @@ public class ArrayDeque<T> {
     public void resize(int capacity){
         T[] replace = (T[]) new Object[capacity];
 
-        for(int i = (_nextFirst+1) % _size; i != _nextLast; i = (i+1) % _size){
+        for(int i = (_nextFirst+1) % _capacity; i != _nextLast; i = (i+1) % _capacity){
             replace[i] = _array[i];
         }
 
@@ -52,8 +52,14 @@ public class ArrayDeque<T> {
 
     public void printDeque(){
         
-        for(int i = (_nextFirst+1) % _size; i != _nextLast; i = (i+1) % _size){
-            System.out.print(_array[i] + " ");
+
+        System.out.println(_nextFirst);
+        System.out.println(_nextLast);
+        System.out.println(_capacity);
+
+        for(int i = (_nextFirst+1) % _capacity; i != _nextLast; i = (i+1) % _capacity){
+            // System.out.print(i);
+            System.out.println(_array[i]);
         }
     }
 
@@ -81,7 +87,15 @@ public class ArrayDeque<T> {
         return _array[index];
     }
 
-    public static void main(String[] args){
-
-    }
+    // public static void main(String[] args){
+    //     ArrayDeque<Double> a = new ArrayDeque<Double>();
+    //     a.addFirst(3.0);
+    //     a.addLast(5.0);
+    //     a.printDeque();
+    //     a.addFirst(2.0);
+    //     a.addFirst(1.0);
+    //     a.addFirst(0.0);
+    //     a.addFirst(-1.0);
+    //     a.printDeque();
+    // }
 }
