@@ -1,11 +1,11 @@
 // import java.lang.FdLibm.Pow;
 
-public class Body {
+public class Planet {
     public double xxPos, yyPos, xxVel, yyVel, mass;
     public String imgFileName;
     private static final double G = 6.67e-11;
     /*Constructor */
-    public Body(double xP, double yP, double xV,double yV, double m, String img){
+    public Planet(double xP, double yP, double xV,double yV, double m, String img){
         xxPos = xP;
         yyPos = yP;
         xxVel = xV;
@@ -14,7 +14,7 @@ public class Body {
         imgFileName = img;
     }    
 
-    public Body(Body b){
+    public Planet(Planet b){
         xxPos = b.xxPos;
         yyPos = b.yyPos;
         xxVel = b.xxVel;
@@ -26,7 +26,7 @@ public class Body {
     /*method */
 
     
-    public double calcDistance(Body b){
+    public double calcDistance(Planet b){
         double delta_X = Math.abs(xxPos - b.xxPos);
         double delta_Y = Math.abs(yyPos - b.yyPos);
         double dis = Math.pow(delta_X,2) + Math.pow(delta_Y,2);
@@ -34,22 +34,22 @@ public class Body {
         return dis;
     }
     
-    public double calcForceExertedBy(Body b){
+    public double calcForceExertedBy(Planet b){
         double F = (G * mass * b.mass) / Math.pow(calcDistance(b),2);
         return F;
     }
 
-    public double calcForceExertedByX(Body b){
+    public double calcForceExertedByX(Planet b){
         double cos = (b.xxPos - xxPos) / calcDistance(b);
         return calcForceExertedBy(b) * cos;
     }
 
-    public double calcForceExertedByY(Body b){
+    public double calcForceExertedByY(Planet b){
         double sin = (b.yyPos - yyPos) / calcDistance(b);
         return calcForceExertedBy(b) * sin;
     }
 
-    public double calcNetForceExertedByX(Body[] b_arr){
+    public double calcNetForceExertedByX(Planet[] b_arr){
         double Force_net = 0;
         int size = b_arr.length; 
         for(int i=0; i<size; i++){
@@ -60,7 +60,7 @@ public class Body {
         return Force_net;
     }
 
-    public double calcNetForceExertedByY(Body[] b_arr){
+    public double calcNetForceExertedByY(Planet[] b_arr){
         double Force_net = 0;
         int size = b_arr.length; 
         for(int i=0; i<size; i++){

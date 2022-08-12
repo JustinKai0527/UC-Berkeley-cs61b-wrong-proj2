@@ -7,14 +7,14 @@ public class NBody{
         return in.readDouble();
     }
 
-    public static Body[] readBodies(String planet){
+    public static Planet[] readBodies(String planet){
         In in = new In(planet);
         int numbers = in.readInt();
-        Body[] b_arr = new Body[numbers];
+        Planet[] b_arr = new Planet[numbers];
         in.readDouble();
 
         for(int i=0; i<numbers; i++){
-            b_arr[i] = new Body(in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(),in.readDouble() , in.readString());
+            b_arr[i] = new Planet(in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(),in.readDouble() , in.readString());
         }
         
         return b_arr;
@@ -26,7 +26,7 @@ public class NBody{
         double dt = Double.parseDouble(args[1]);
         String filename = args[2];
         double radius = readRadius(filename);
-        Body[] bodies = readBodies(filename);
+        Planet[] bodies = readBodies(filename);
         
         // Drawing the Background
         String imageToDraw = "images/starfield.jpg";
