@@ -4,7 +4,7 @@ public class ArrayDeque<T> {
     private int _nextLast;
     private int _capacity;
     private int _size;
-    private T[] _array;
+    public T[] _array;
 
     ArrayDeque(){
         _capacity = 8;
@@ -14,27 +14,27 @@ public class ArrayDeque<T> {
     }
 
     public void resize(int capacity){
-        T[] replace = (T[]) new Object(capacity);
+        T[] replace = (T[]) new Object[capacity];
 
-        for(int i = (_nextFirst+1) % size; i != __nextLast; (i+1) % _size){
-            replace[i] = array[i];
+        for(int i = (_nextFirst+1) % _size; i != _nextLast; i = (i+1) % _size){
+            replace[i] = _array[i];
         }
 
         _array = replace;
     }
     public void addFirst(T item){
         
-        if(size == _capacity)  resize(_capacity * 2);
+        if(_size == _capacity)  resize(_capacity * 2);
 
         _array[_nextFirst] = item;
         _nextFirst--;
         if(_nextFirst < 0)  _nextFirst = _capacity-1;
-        size++;
+        _size++;
     }
 
     public void addLast(T item){
 
-        if(size == _capacity)  resize(_capacity * 2);
+        if(_size == _capacity)  resize(_capacity * 2);
 
         _array[_nextLast] = item;
         _nextLast++;
@@ -52,33 +52,33 @@ public class ArrayDeque<T> {
 
     public void printDeque(){
         
-        for(int i = (_nextFirst+1) % size; i != __nextLast; (i+1) % _size){
-            System.out.print(array[i] + " ");
+        for(int i = (_nextFirst+1) % _size; i != _nextLast; i = (i+1) % _size){
+            System.out.print(_array[i] + " ");
         }
     }
 
     public T removeFirst(){
 
-        if(size <= _capacity/4)  resize(_capacity * 1/4);
+        if(_size <= _capacity/4)  resize(_capacity * 1/4);
 
         int temp = _nextFirst;
-        _nextFirst = (_nextFirst+1)%size;
-        return array[temp];
+        _nextFirst = (_nextFirst+1)%_size;
+        return _array[temp];
     }
 
     public T removeLast(){
 
-        if(size <= _capacity/4)  resize(_capacity * 1/4);
+        if(_size <= _capacity/4)  resize(_capacity * 1/4);
 
         int temp = _nextLast;
         _nextLast = (_nextLast-1);
         if(_nextLast < 0)  _nextLast *= -1;
-        return array[temp];
+        return _array[temp];
     }
 
     public T get(int index){
 
-        return array[index];
+        return _array[index];
     }
 
     public static void main(String[] args){
