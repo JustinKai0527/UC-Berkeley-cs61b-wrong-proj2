@@ -60,33 +60,33 @@ public class ArrayDeque<T> {
     public void printDeque(){
         
 
-        // System.out.println(_nextFirst);
-        // System.out.println(_nextLast);
-        // System.out.println(_size);
+        System.out.println(_nextFirst);
+        System.out.println(_nextLast);
+        System.out.println(_size);
 
         for(int i = (_nextFirst+1) % _capacity; i != _nextLast; i = (i+1) % _capacity){
-            // System.out.print(i);
+            // System.out.print(i + " ");
             System.out.println(_array[i]);
         }
     }
 
     public T removeFirst(){
 
-        _nextFirst = (_nextFirst+1)%_size;
-        int temp = _nextFirst;
+        _nextFirst = (_nextFirst+1)%_capacity;
+        T temp = _array[_nextFirst];
         _size--;
         if(_size <= _capacity/4)  resize(_capacity / 2);
-        return _array[temp];
+        return temp;
     }
 
     public T removeLast(){
 
         _nextLast = (_nextLast-1);
-        if(_nextLast < 0)  _nextLast *= -1;
-        int temp = _nextLast;
+        if(_nextLast < 0)  _nextLast = _capacity-1;
+        T temp = _array[_nextLast];
         _size--;
         if(_size <= _capacity/4)  resize(_capacity / 2);
-        return _array[temp];
+        return temp;
     }
 
     public T get(int index){
@@ -99,21 +99,34 @@ public class ArrayDeque<T> {
     // public static void main(String[] args){
     //     ArrayDeque<Double> a = new ArrayDeque<Double>();
     //     a.addFirst(3.0);
-    //     a.addLast(5.0);
+    //     a.addLast(4.0);
     //     // a.printDeque();
     //     a.addFirst(2.0);
     //     a.addFirst(1.0);
-    //     a.addFirst(0.0);
-    //     a.addFirst(-1.0);
         
+    //     a.addFirst(0.0);
+    //     // a.printDeque();
+    //     a.addFirst(-1.0);
+    //     // a.printDeque();
     //     a.addFirst(-2.0);
+    //     // a.printDeque();
     //     a.addFirst(-3.0);
-    //     a.removeLast();
-    //     a.removeLast();
-    //     a.removeLast();
-    //     a.removeLast();
-    //     a.removeLast();
-    //     a.removeLast();
+    //     // a.printDeque();
+    //     a.addLast(5.0);
+    //     // a.printDeque();
+    //     // a.printDeque();
+    //     System.out.println(a.removeFirst());
+    //     // a.printDeque();
+    //     System.out.println(a.removeFirst());
+    //     // a.printDeque();
+    //     System.out.println(a.removeFirst());
+    //     // a.printDeque();
+    //     System.out.println(a.removeFirst());
+    //     // a.printDeque();
+    //     // a.printDeque();
+    //     System.out.println(a.removeFirst());
+    //     // a.printDeque();
+    //     System.out.println(a.removeFirst());
     //     a.printDeque();
     //     // System.out.println(a.getCapacity());
     // }
