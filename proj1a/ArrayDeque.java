@@ -44,8 +44,7 @@ public class ArrayDeque<T> {
     public void addLast(T item){
 
         _array[_nextLast] = item;
-        _nextLast++;
-        if(_nextLast == _capacity)  _nextLast = 0; 
+        _nextLast = (_nextLast + 1) % _capacity;
         _size++;
         if(_size == _capacity-2)  resize(_capacity * 2);
     }
@@ -73,8 +72,8 @@ public class ArrayDeque<T> {
 
     public T removeFirst(){
 
-        int temp = _nextFirst;
         _nextFirst = (_nextFirst+1)%_size;
+        int temp = _nextFirst;
         _size--;
         if(_size <= _capacity/4)  resize(_capacity / 2);
         return _array[temp];
@@ -82,9 +81,9 @@ public class ArrayDeque<T> {
 
     public T removeLast(){
 
-        int temp = _nextLast;
         _nextLast = (_nextLast-1);
         if(_nextLast < 0)  _nextLast *= -1;
+        int temp = _nextLast;
         _size--;
         if(_size <= _capacity/4)  resize(_capacity / 2);
         return _array[temp];
