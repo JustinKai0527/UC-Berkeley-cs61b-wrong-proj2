@@ -105,7 +105,8 @@ public class ArrayDeque<T> {
 
     public T get(int index){
 
-        return _array[index];
+        index = (index + (_nextFirst+1)) % _capacity;   /*_nextFirst+1 is index 0 becareful */
+        return _array[index]; 
     }
 
     // public int getCapacity(){  return _capacity;}
