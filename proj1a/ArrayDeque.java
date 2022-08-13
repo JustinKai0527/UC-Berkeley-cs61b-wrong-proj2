@@ -34,6 +34,12 @@ public class ArrayDeque<T> {
 
     public void addFirst(T item){
 
+        if(_size == 0){
+            _capacity = 8;
+            _nextFirst = 4;
+            _nextLast = 5;
+            _array = (T[]) new Object[8];
+        }
         _array[_nextFirst] = item;
         _nextFirst--;
         if(_nextFirst < 0)  _nextFirst = _capacity-1;
@@ -43,6 +49,12 @@ public class ArrayDeque<T> {
 
     public void addLast(T item){
 
+        if(_size == 0){
+            _capacity = 8;
+            _nextFirst = 4;
+            _nextLast = 5;
+            _array = (T[]) new Object[8];
+        }
         _array[_nextLast] = item;
         _nextLast = (_nextLast + 1) % _capacity;
         _size++;
@@ -72,6 +84,7 @@ public class ArrayDeque<T> {
 
     public T removeFirst(){
 
+        if(_size == 0)  return null;
         _nextFirst = (_nextFirst+1)%_capacity;
         T temp = _array[_nextFirst];
         _size--;
@@ -81,6 +94,7 @@ public class ArrayDeque<T> {
 
     public T removeLast(){
 
+        if(_size == 0)  return null;
         _nextLast = (_nextLast-1);
         if(_nextLast < 0)  _nextLast = _capacity-1;
         T temp = _array[_nextLast];
